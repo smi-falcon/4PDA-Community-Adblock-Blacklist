@@ -2,7 +2,8 @@ const fs = require('fs');
 
 const adblockFile = 'Blacklist_adblock.txt';
 
-const rules = fs.readFileSync(adblockFile, 'utf8').trim().split('\n');
+const lines = fs.readFileSync(adblockFile, 'utf8').split('\n');
+const rules = lines.filter(line => line.trim() !== '' && !line.startsWith('!'));
 const records = rules.length;
 
 const now = new Date();
