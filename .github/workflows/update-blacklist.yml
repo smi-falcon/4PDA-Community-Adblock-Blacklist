@@ -1,0 +1,39 @@
+name: Update Blacklist
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install hostlist-compiler
+        run: npm install -g @adguard/hostlist-compiler@2.1.1
+
+      - name: Download hosts file
+        run: curl -fsSL https://schakal.ru/hosts/hosts.txt -o Blacklist_hosts.txt
+
+      - name: Compile hosts to Adblock
+        run: hostlist-compiler -i Blacklist_hosts.txt -t hosts -o Blacklist_adblock.txt
+
+      - name: Add header
+        run: node scripts/add-header.js
+
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: update blacklist [skip ci]'
+          file_pattern: 'Blacklist_hosts.txt Blacklist_adblock.txt'
