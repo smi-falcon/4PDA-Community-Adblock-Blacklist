@@ -25,7 +25,7 @@ jobs:
         run: npm install -g @adguard/hostlist-compiler@2.1.1
 
       - name: Download hosts file
-        run: curl -4 -fsSL -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" --retry 5 --retry-delay 10 --connect-timeout 20 https://schakal.ru/hosts/hosts.txt -o Blacklist_hosts.txt
+        run: curl -4 -fsSL -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" --retry 5 --retry-delay 10 --connect-timeout 20 https://schakal.hopto.org/hosts.txt -o Blacklist_hosts.txt
 
       - name: Compile hosts to Adblock
         run: hostlist-compiler -i Blacklist_hosts.txt -t hosts -o Blacklist_adblock.txt
