@@ -20,7 +20,7 @@ const header = [
   `! Last modified: ${lastModified}`,
   '! Expires: 1 day',
   '! Author: Schakal',
-  '! Homepage: https://schakal.hopto.org/',
+  '! Homepage: https://github.com/smi-falcon/4PDA-Community-Blacklist',
   '! Source: https://schakal.hopto.org/hosts.txt',
   `! Records: ${records}`,
   '',
