@@ -21,21 +21,35 @@ jobs:
         with:
           node-version: 22
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
       - name: Install hostlist-compiler
         run: npm install -g @adguard/hostlist-compiler@2.1.1
 
       - name: Download hosts file
-        run: curl -4 -fsSL -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" --retry 5 --retry-delay 10 --connect-timeout 20 https://schakal.hopto.org/hosts.txt -o Blacklist_hosts.txt
+        run: curl -4 -fsSL -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" --retry 5 --retry-delay 10 --connect-timeout 20 --max-time 180 https://schakal.hopto.org/hosts.txt -o Blacklist_hosts.txt
 
       - name: Compile hosts to Adblock
         run: hostlist-compiler -i Blacklist_hosts.txt -t hosts -o Blacklist_adblock.txt
 
-      - name: Add header
+      - name: Add header to Adblock
         run: node scripts/add-header.js
+
+      - name: Add headers and convert hosts
+        run: python3 scripts/add-header-and-convert.py
+
+      - name: Validate outputs
+        run: |
+          for f in Blacklist_*.txt; do
+            test -s "$f"
+          done
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: 'chore: update blacklist [skip ci]'
-          file_pattern: 'Blacklist_hosts.txt Blacklist_adblock.txt'
+          file_pattern: 'Blacklist_*.txt'
           push_options: '--force-with-lease'
