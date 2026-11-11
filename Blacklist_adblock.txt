@@ -1,5 +1,5 @@
 ! Title: 4PDA Community adblock blacklist
-! Last modified: 11 Nov 2026 09:56 UTC
+! Last modified: 11 Nov 2026 10:49 UTC
 ! Expires: 1 day
 ! Author: Schakal
 ! Homepage: https://schakal.hopto.org/
