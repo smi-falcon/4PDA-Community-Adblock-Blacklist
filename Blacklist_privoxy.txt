@@ -1,8 +1,8 @@
 # Title: 4PDA Community privoxy blacklist
-# Last modified: 11 Nov 2026 10:49 UTC
+# Last modified: 11 Nov 2026 11:23 UTC
 # Expires: 1 day
 # Author: Schakal
-# Homepage: https://schakal.hopto.org/
+# Homepage: https://github.com/smi-falcon/4PDA-Community-Blacklist
 # Source: https://schakal.hopto.org/hosts.txt
 # Records: 127147
 
