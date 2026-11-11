@@ -68,7 +68,7 @@ def build_header(name, records, comment, desc):
         f"{c} Last modified: {last_modified}",
         f"{c} Expires: 1 day",
         f"{c} Author: Schakal",
-        f"{c} Homepage: https://schakal.hopto.org/",
+        f"{c} Homepage: https://github.com/smi-falcon/4PDA-Community-Blacklist",
         f"{c} Source: https://schakal.hopto.org/hosts.txt",
         f"{c} Records: {records}",
         "",
