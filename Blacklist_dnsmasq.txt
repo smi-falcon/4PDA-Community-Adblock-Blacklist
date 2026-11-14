@@ -1,5 +1,5 @@
 # Title: 4PDA Community dnsmasq blacklist
-# Last modified: 13 Nov 2026 10:10 UTC
+# Last modified: 14 Nov 2026 09:34 UTC
 # Expires: 1 day
 # Author: Schakal
 # Homepage: https://github.com/smi-falcon/4PDA-Community-Blacklist
